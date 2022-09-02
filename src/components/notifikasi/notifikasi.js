@@ -134,7 +134,7 @@ export default function ResponsiveDrawer(props) {
       <Box sx={{mt:'10px'}}>
             <FormControl>
               <FormLabel >Diurutkan berdasarkan</FormLabel>
-                  <FormControlLabel value="Terlalu" control={<Radio />} label="Terbaru" />
+                  <FormControlLabel value="Terbaru" control={<Radio />} label="Terbaru" />
                   <FormControlLabel value="Terlama" control={<Radio />} label="Terlama" />
             </FormControl>
             </Box>

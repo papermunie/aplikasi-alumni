@@ -72,12 +72,14 @@ export default function ResponsiveDrawer(props) {
     {
         type:"Pertanyaan dari Zacky Al Baehaki ",
         time:" · 18 jam yang lalu",
-        title:"Mengapa perusahaan lebih senang dengan pekerja yang berlatar belakang organisasi?"
+        title:"Mengapa perusahaan lebih senang dengan pekerja yang berlatar belakang organisasi?",
+        answer:"4 Jawaban"
       },
       {
         type:"Pertanyaan dari Misna Syari ",
         time:" · 20 jam yang lalu",
-        title:"Apa saja tes yang ada di perusahaan"
+        title:"Apa saja tes yang ada di perusahaan",
+        answer:"10 Jawaban"
       },
   ]
   return (
@@ -99,7 +101,7 @@ export default function ResponsiveDrawer(props) {
           Konsultasi
         </Typography>
       </Toolbar>
-          </AppBar>
+            </AppBar>
     <Grid container sx={{mt:'70px'}}>
     <Grid item md={8} sx={{p:"35px",height:'90vh',bgColor:'#F5F5F5',borderRight:'1px solid #EAEAEA'}}>
       {
@@ -140,17 +142,23 @@ export default function ResponsiveDrawer(props) {
       </Box>
       <Box sx={{mt:'10px'}}>
             <FormControl>
-              <FormLabel >Diurutkan berdasarkan</FormLabel>
-                  <FormControlLabel value="Terlalu" control={<Radio />} label="Terbaru" />
-                  <FormControlLabel value="Terlama" control={<Radio />} label="Terlama" />
+              <FormLabel >Diurutkan Berdasarkan</FormLabel>
+                  <FormControlLabel value="Terbaru" control={<Radio />} label="Terbaru" />
+                  <FormControlLabel value="Terpopuler" control={<Radio />} label="Terpopuler" />
             </FormControl>
             </Box>
             <Box sx={{mt:'10px'}}>
             <FormControl>
-              <FormLabel >Dari siapa</FormLabel>
+              <FormLabel >Lihat Pertanyaan</FormLabel>
                   <FormControlLabel value="Semua" control={<Radio />} label="Semua" />
-                  <FormControlLabel value="Assesor" control={<Radio />} label="Assesor" />
-                  <FormControlLabel value="Sistem" control={<Radio />} label="Sistem" />
+                  <FormControlLabel value="Saya" control={<Radio />} label="Saya" />
+            </FormControl>
+            </Box>
+            <Box sx={{mt:'10px'}}>
+            <FormControl>
+              <FormLabel >Banyaknya Jawaban</FormLabel>
+                  <FormControlLabel value="Semua" control={<Radio />} label="Semua" />
+                  <FormControlLabel value="< 0" control={<Radio />} label="< 0" />
             </FormControl>
             </Box>
     </Grid>
