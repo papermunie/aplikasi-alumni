@@ -36,7 +36,6 @@ import {
   Routes,
   MemoryRouter,
   useLocation,
-  Link,
 } from 'react-router-dom';
 import { StaticRouter } from 'react-router-dom/server';
 import SearchIcon from '@mui/icons-material/Search';
@@ -46,7 +45,6 @@ import {
   InputBase,
   Paper,
   IconButton,
-  Button,
   CssBaseline,
   AppBar
 } from '@mui/material'
@@ -69,7 +67,7 @@ export default function ResponsiveDrawer(props) {
       type:"Pertanyaan dari Nur Kholiq Ansori",
       time:" · 16 jam yang lalu",
       title:"Bagaimana cara menarik perhatian HRD?",
-      detail:"/detailKonsultasi"
+      answer:"1 Jawaban"
     },
     {
         type:"Pertanyaan dari Zacky Al Baehaki ",
@@ -80,7 +78,7 @@ export default function ResponsiveDrawer(props) {
         type:"Pertanyaan dari Misna Syari ",
         time:" · 20 jam yang lalu",
         title:"Apa saja tes yang ada di perusahaan"
-      },   
+      },
   ]
   return (
     <Box sx={{ maxWidth:'100%', display:'flex', ml:'17rem' }}>
@@ -98,26 +96,27 @@ export default function ResponsiveDrawer(props) {
         >
         <Toolbar sx={{ width:'auto', ml:'3rem' }}>
         <Typography sx={{ ml:'1px' }} fontSize={'24px'} fontFamily={'Poppins'} color={'black'} paddingLeft={'3rem'}>
-          Notifikasi
+          Konsultasi
         </Typography>
       </Toolbar>
           </AppBar>
     <Grid container sx={{mt:'70px'}}>
-    <Grid item md={8} sx={{p:"35px",height:'90vh',borderRight:'1px solid #EAEAEA'}}>
+    <Grid item md={8} sx={{p:"35px",height:'90vh',bgColor:'#F5F5F5',borderRight:'1px solid #EAEAEA'}}>
       {
         dataAssessment.map((item,index)=>(
-          <Button href={item.detail}>
           <Card elevation={0} sx={{p:3,backgroundColor:'#F5F5F5',mb:"31px"}}>
             <Box>
-              <Box  flexDirection="row" display="flex" >
+              <Box flexDirection="row" display="flex">
                 <Typography sx={{color:'#2A68C4',fontSize:14}}>{item.type}</Typography>
-                <Typography sx={{color:'#ababab',fontSize:14}}>{item.time}</Typography>
+                <Typography sx={{color:'#ababab',fontSize:14, mr:'10px'}}>{item.time}</Typography>
+                <Card sx={{borderRadius:'10px', ml:'20px', backgroundColor:'#005aff'}}>
+                <Typography sx={{color:'#fff',fontSize:14, pl:'20px',pr:'20px'}}>{item.answer}</Typography>
+                </Card>
               </Box>
               <Typography sx={{color:'#2A68C4',mt:'10px',mb:'10px',fontSize:20}}>{item.title}</Typography>
               <Typography sx={{color:'#272729',mb:'10px',fontSize:14}}>{item.description}</Typography>
             </Box>
           </Card>
-          </Button>
         ))
       }
     </Grid>
@@ -125,7 +124,7 @@ export default function ResponsiveDrawer(props) {
     <Paper
         component="form"
         elevation={0}
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 400,border:'1px solid #EAEAEA',borderRadius:"10px" }}
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300,border:'1px solid #EAEAEA',borderRadius:"10px" }}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
