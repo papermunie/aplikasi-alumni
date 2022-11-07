@@ -20,7 +20,7 @@ import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlin
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 // import MenuIcon from '@mui/icons-material/Menu';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { Avatar, Toolbar } from '@mui/material';
+import { Avatar, Toolbar, useMediaQuery } from '@mui/material';
 // import Toolbar from '@mui/material/Toolbar';
 // import Button from '@mui/material/Button';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -46,15 +46,18 @@ import {
   Paper,
   IconButton,
   CssBaseline,
-  AppBar
+  AppBar,
+  Button
 } from '@mui/material'
 import Radio from '@mui/material/Radio';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import RadioGroup from '@mui/material/RadioGroup';
+import {Link} from 'react-router-dom';
 
-const drawerWidth = 240;
-export default function ResponsiveDrawer(props) {
+const drawerWidth = 258;
+export default function TambahKonsultasi (props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -64,69 +67,85 @@ export default function ResponsiveDrawer(props) {
 
   let dataAssessment = [
     {
-      type:"Pertanyaan dari Nur Kholiq Ansori",
+      type:"Pertanyaan dari",
+      name:" Nur Kholiq Ansori ",
       time:" · 16 jam yang lalu",
       title:"Bagaimana cara menarik perhatian HRD?",
       answer:"1 Jawaban"
     },
     {
-        type:"Pertanyaan dari Zacky Al Baehaki ",
+        type:"Pertanyaan dari ",
+        name:"Zacky Al Baehaki",
         time:" · 18 jam yang lalu",
         title:"Mengapa perusahaan lebih senang dengan pekerja yang berlatar belakang organisasi?",
         answer:"4 Jawaban"
       },
       {
-        type:"Pertanyaan dari Misna Syari ",
+        type:"Pertanyaan dari",
+        name:" Misna Syari",
         time:" · 20 jam yang lalu",
         title:"Apa saja tes yang ada di perusahaan",
         answer:"10 Jawaban"
       },
   ]
   return (
-    <Box sx={{ maxWidth:'100%', display:'flex', ml:'17rem' }}>
+    <Box sx={{  display:'flex' }}>
         <CssBaseline />
       <AppBar
         elevation={1}
         position= "fixed"
         sx={{
-          width: { md: `calc(200vh)` },
+          width: { md: `calc(110% - ${drawerWidth}px)` },
+          height:'80px',
           ml: { sm: `${drawerWidth}px` },
           bgcolor: 'white',
           paddingTop: '10px',
-          paddingLeft:'4rem'
+          paddingLeft:'0rem'
         }}
         >
-        <Toolbar sx={{ width:'auto', ml:'3rem' }}>
-        <Typography sx={{ ml:'1px' }} fontSize={'24px'} fontFamily={'Poppins'} color={'black'} paddingLeft={'3rem'}>
+        <Toolbar sx={{ width:'150%', ml:'15rem' }}>
+        <Typography sx={{ ml:'-5.5rem' }} fontSize={'24px'} fontFamily={'Poppins'} color={'black'} >
           Konsultasi
         </Typography>
-      </Toolbar>
+      <Button component={Link} to='/konsultasi-tambah' sx={{ mt:'0px', borderRadius:'10px', ml: '41.5rem'}} variant="contained"> 
+            <Typography y6
+            fontFamily={'Poppins'} 
+            textTransform={'capitalize'}
+            fontSize={'normal'} 
+            marginTop={'-1px'}
+            >
+            Tanya sebuah pertanyaan
+            </Typography>
+        </Button>
+        </Toolbar>
             </AppBar>
-    <Grid container sx={{mt:'70px'}}>
-    <Grid item md={8} sx={{p:"35px",height:'90vh',bgColor:'#F5F5F5',borderRight:'1px solid #EAEAEA'}}>
-      {
+            <Grid container sx={{mt:10}} style={{backgroundColor:"#ECECEC", height:'100vh', width:'100%', pl:'2rem'}}>
+            <Grid item md={8} alignItems='center' sx={{ p:"35px", ml:'16.5rem'}}>
+              {
+
         dataAssessment.map((item,index)=>(
-          <Card elevation={0} sx={{p:3,backgroundColor:'#F5F5F5',mb:"31px"}}>
+          <Card elevation={0} sx={{width:'100vh', p:3,backgroundColor:'#FFFFFF',mb:"31px"}}>
             <Box>
               <Box flexDirection="row" display="flex">
-                <Typography sx={{color:'#2A68C4',fontSize:14}}>{item.type}</Typography>
-                <Typography sx={{color:'#ababab',fontSize:14, mr:'10px'}}>{item.time}</Typography>
+                <Typography sx={{color:'#black',fontSize:14}}>{item.type}</Typography>
+                <Typography sx={{color:'blue', fontSize:'10', paddingLeft:'0.2rem', }}><b>{item.name}</b></Typography>
+                <Typography sx={{color:'#ababab',fontSize:14, mr:'10px', paddingLeft:'0.3rem'}}>{item.time}</Typography>
                 <Card sx={{borderRadius:'10px', ml:'20px', backgroundColor:'#005aff'}}>
                 <Typography sx={{color:'#fff',fontSize:14, pl:'20px',pr:'20px'}}>{item.answer}</Typography>
                 </Card>
               </Box>
-              <Typography sx={{color:'#2A68C4',mt:'10px',mb:'10px',fontSize:20}}>{item.title}</Typography>
+              <Typography sx={{color:'black',mt:'10px',mb:'10px',fontSize:20}}>{item.title}</Typography>
               <Typography sx={{color:'#272729',mb:'10px',fontSize:14}}>{item.description}</Typography>
             </Box>
           </Card>
         ))
       }
     </Grid>
-    <Grid item md={4} sx={{height:400,px:"26px",py:"20px"}}>
+    <Grid item md={4} sx={{ position:'fixed',height:'100vh',px:"26px",py:"20px", backgroundColor:"white", ml: '64rem'}}>
     <Paper
         component="form"
         elevation={0}
-        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 300,border:'1px solid #EAEAEA',borderRadius:"10px" }}
+        sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', mt: 2, width: 300,border:'1px solid #EAEAEA',borderRadius:"10px" }}
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
@@ -138,29 +157,32 @@ export default function ResponsiveDrawer(props) {
         </IconButton>
       </Paper>
       <Box sx={{mt:"38px"}}>
-        <Typography>Filter</Typography>
+        <Typography><b>Filter</b></Typography>
       </Box>
-      <Box sx={{mt:'10px'}}>
-            <FormControl>
-              <FormLabel >Diurutkan Berdasarkan</FormLabel>
-                  <FormControlLabel value="Terbaru" control={<Radio />} label="Terbaru" />
-                  <FormControlLabel value="Terpopuler" control={<Radio />} label="Terpopuler" />
-            </FormControl>
-            </Box>
-            <Box sx={{mt:'10px'}}>
-            <FormControl>
-              <FormLabel >Lihat Pertanyaan</FormLabel>
-                  <FormControlLabel value="Semua" control={<Radio />} label="Semua" />
-                  <FormControlLabel value="Saya" control={<Radio />} label="Saya" />
-            </FormControl>
-            </Box>
-            <Box sx={{mt:'10px'}}>
-            <FormControl>
-              <FormLabel >Banyaknya Jawaban</FormLabel>
-                  <FormControlLabel value="Semua" control={<Radio />} label="Semua" />
-                  <FormControlLabel value="< 0" control={<Radio />} label="< 0" />
-            </FormControl>
-            </Box>
+      <Box sx={{mt:'20px'}}>
+      <FormControl>
+      <FormLabel id="demo-controlled-radio-buttons-group"  style={{color:'black'}}>Diurutkan berdasarkan</FormLabel>
+      <RadioGroup
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+      >
+        <FormControlLabel value="terbaru" control={<Radio />} label="Terbaru" />
+        <FormControlLabel value="terpopuler" control={<Radio />} label="Terpopuler" />
+      </RadioGroup>
+    </FormControl>
+    </Box>
+    <Box sx={{mt:'20px'}}>
+      <FormControl>
+      <FormLabel id="demo-controlled-radio-buttons-group" style={{color:'black'}}>Lihat Pertanyaan</FormLabel>
+      <RadioGroup
+        aria-labelledby="demo-controlled-radio-buttons-group"
+        name="controlled-radio-buttons-group"
+      >
+        <FormControlLabel value="semua" control={<Radio />} label="Semua" />
+        <FormControlLabel value="saya" control={<Radio />} label="Saya" />
+      </RadioGroup>
+    </FormControl>
+    </Box>
     </Grid>
   </Grid>
   </Box>

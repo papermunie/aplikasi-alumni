@@ -20,7 +20,7 @@ import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlin
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 // import MenuIcon from '@mui/icons-material/Menu';
 import AssignmentIcon from '@mui/icons-material/Assignment';
-import { Avatar, Toolbar } from '@mui/material';
+import { Avatar, CardActions, Toolbar } from '@mui/material';
 // import Toolbar from '@mui/material/Toolbar';
 // import Button from '@mui/material/Button';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -46,9 +46,60 @@ import {
   Paper,
   IconButton,
   CssBaseline,
-  AppBar
+  AppBar,
+  Button,
+  TextField
 } from '@mui/material'
-import Radio from '@mui/material/Radio';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+import {Link} from 'react-router-dom';
+
+const drawerWidth = 240;
+export default function Konsultasi (props) {
+  const { window } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  return (
+    <Box sx={{ maxWidth:'100%', display:'flex', ml:'17rem' }}>
+        <CssBaseline />
+      <AppBar
+        elevation={1}
+        position= "fixed"
+        sx={{
+          width: { md: `calc(200vh)` },
+          ml: { sm: `${drawerWidth}px` },
+          bgcolor: 'white',
+          paddingTop: '10px',
+          paddingLeft:'4rem'
+        }}
+        >
+        <Toolbar sx={{ width:'150%', ml:'15rem' }}>
+        <Typography sx={{ ml:'-5.5rem' }} fontSize={'24px'} fontFamily={'Poppins'} color={'black'} >
+          Tambah Pertanyaan
+        </Typography>
+      </Toolbar>
+            </AppBar>
+            <Grid container sx={{mt:'70px'}}>
+            <Grid item md={8} sx={{p:"35px",height:'90vh'}}>
+                <Box>
+                <Box sx={{}}>
+                 <TextField sx={{width:1000}} id="standard-basic" label="Judul Pertanyaan" variant="standard" fullWidth/>
+                </Box>
+                <TextField sx={{width:1000, mt:2}} id="standard-basic" label="Pertanyaan" variant="standard" multiline rows={4} fullWidth />
+              
+              </Box>
+              <CardActions>
+               <Button component={Link} to='/konsultasi' sx={{mb:'0px', borderRadius:'10px', ml: '53.5rem', mt:'50px'}} variant="outlined">
+                  Batal
+               </Button>
+              <Button component={Link} to='/konsultasi' sx={{ mt:'0px', borderRadius:'10px', ml: '53.5rem', mt:'50px'}} variant="contained"> 
+                Kirim
+              </Button>
+            </CardActions>
+      </Grid>
+  </Grid>
+  </Box>
+  );
+}
